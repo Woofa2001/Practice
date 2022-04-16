@@ -1,0 +1,209 @@
+﻿<Page x:Class="Practica_WPF.Pages.SubProgramPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Practica_WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubProgramPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <LinearGradientBrush x:Key="HeaderBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#FF6B8E95" Offset="0"/>
+            <GradientStop Color="#FF14A7C1" Offset="1"/>
+            <GradientStop Color="#FF1E424E" Offset="0.509"/>
+            <GradientStop Color="#FF1D4855" Offset="0.542"/>
+            <GradientStop Color="#FF1D4855" Offset="0.542"/>
+            <GradientStop Color="#FF193A44" Offset="0.526"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource HeaderBrush}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="MinWidth" Value="0" />
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="MenuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="{StaticResource HeaderBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="RowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="#6FB98F"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="MaxHeight" Value="100"/>
+        </Style>
+
+        <Style x:Key="CellStyle" TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+    </Page.Resources>
+
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0" x:Name="SplitterColumn"/>
+            <ColumnDefinition Width="0" x:Name="ChangeColumn" MaxWidth="175"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35" MaxHeight="35"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF2C7873" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="Подпрограммы" Grid.ColumnSpan="3" FontSize="20" 
+               VerticalAlignment="Bottom" Foreground="White"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="AddSubProgram" Content="Добавить" Width="75" Margin="5,5,5,0" Height="25" VerticalAlignment="Top" Click="CopySubProgram_Click" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="CopySubProgram" Content="Копировать" Width="75" Margin="5,5" Click="CopySubProgram_Click" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="EditSubProgram" Content="Изменить" Width="75" Margin="5,5" Click="CopySubProgram_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="DeleteSubProgram" Content="Удалить" Width="75" Margin="5,5" Click="DeleteSubProgram_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <ComboBox Name="AreasFilterComboBox" Width="150" Margin="5,5" SelectionChanged="AreasFilterComboBox_SelectionChanged" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" >
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="#FF9EA745"/>
+                        <Setter Property="BorderBrush" Value="#FF9EA745"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+
+
+
+            <TextBox x:Name="AreasFilterTextBox" Width="200" Margin="5,5" TextChanged="AreasFilterTextBox_TextChanged" >
+                
+            </TextBox>
+        </StackPanel>
+
+
+        <DataGrid  Name="DataGridSub" Grid.Column="0" Grid.Row="2" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource HeaderStyle}" CanUserAddRows="False" >
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2C7873"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+                </DataGrid.Background>
+                <DataGrid.Columns >
+                <DataGridTemplateColumn MinWidth="150" Width="*" >
+                    <DataGridTemplateColumn.Header >
+                        Название программы
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Programs.name}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="150" Width="*" >
+                    <DataGridTemplateColumn.Header >
+                        Название подпрограммы
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding name}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center" 
+                      Width="4" Background="#9BB6BF"/>
+
+
+        <StackPanel Grid.RowSpan="3" Grid.Row="0" Grid.Column="2" Orientation="Vertical">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2C7873" Offset="0"/>
+                    <GradientStop Color="#FF618E8B" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Content="X"  Grid.Column="2" Grid.Row="1" Width="25" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseEdChangeClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Content="Название программы" Foreground="Black"/>
+            <ComboBox x:Name="ProgramsComboBox" DisplayMemberPath="name" SelectedItem="{Binding ElementName=DataGridSub, Path=SelectedItem.Programs}" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}"  Width="175">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="#FF9EA745"/>
+                        <Setter Property="BorderBrush" Value="#FF9EA745"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox> 
+            <Label Content="Название подпрограммы" Foreground="Black"/>
+            <TextBox Text="{Binding ElementName=DataGridSub, Path=SelectedItem.name}" x:Name="Area1TypeTextBox"/>
+            <Button Height="25" Content="Принять"  Margin="0 10 0 10" VerticalAlignment="Bottom" Click="CommitButtonClick">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF9EA745"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

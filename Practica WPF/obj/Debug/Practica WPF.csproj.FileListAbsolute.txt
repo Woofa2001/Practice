@@ -1,0 +1,38 @@
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\Practica WPF.exe.config
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\Practica WPF.exe
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\Practica WPF.pdb
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\EntityFramework.dll
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\EntityFramework.xml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.csproj.SuggestedBindingRedirects.cache
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\AutoritizationWindow.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\MainWindow.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\RegistrationWindow.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\App.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF_Content.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF_MarkupCompile.cache
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF_MarkupCompile.lref
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\AutoritizationWindow.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\MainWindow.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\RegistrationWindow.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.g.resources
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica_WPF.Properties.Resources.resources
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.csproj.GenerateResource.cache
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.csproj.CoreCompileInputs.cache
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.csproj.CopyComplete
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.exe
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.pdb
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\ProgramPage.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\SubProgramPage.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\Vedomstva.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\ProgramPage.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\SubProgramPage.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\Vedomstva.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Practica WPF.csproj.AssemblyReference.cache
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\Co.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\Co.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\master-datails.g.cs
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\Pages\master-datails.baml
+C:\Users\Kirill\Desktop\Диплом\Practica WPF\Practica WPF\obj\Debug\App.baml

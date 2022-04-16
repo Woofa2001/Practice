@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PracticModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Coexecutors">
+    <Key>
+      <PropertyRef Name="id_coexecutors" />
+    </Key>
+    <Property Name="id_coexecutors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_users" Type="int" />
+    <Property Name="id_program" Type="int" />
+  </EntityType>
+  <EntityType Name="Programs">
+    <Key>
+      <PropertyRef Name="id_program" />
+    </Key>
+    <Property Name="id_program" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="int" />
+    <Property Name="start_date" Type="int" />
+    <Property Name="end_date" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Subprograms">
+    <Key>
+      <PropertyRef Name="id_subprogram" />
+    </Key>
+    <Property Name="id_subprogram" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_program" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+    <Property Name="name_user" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Coexecutors_Programs">
+    <End Role="Programs" Type="Self.Programs" Multiplicity="0..1" />
+    <End Role="Coexecutors" Type="Self.Coexecutors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="id_program" />
+      </Principal>
+      <Dependent Role="Coexecutors">
+        <PropertyRef Name="id_program" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coexecutors_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Coexecutors" Type="Self.Coexecutors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Coexecutors">
+        <PropertyRef Name="id_users" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programs_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Programs" Type="Self.Programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Programs">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subprograms_Programs">
+    <End Role="Programs" Type="Self.Programs" Multiplicity="0..1" />
+    <End Role="Subprograms" Type="Self.Subprograms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="id_program" />
+      </Principal>
+      <Dependent Role="Subprograms">
+        <PropertyRef Name="id_program" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PracticModelContainer">
+    <EntitySet Name="Coexecutors" EntityType="Self.Coexecutors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Programs" EntityType="Self.Programs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subprograms" EntityType="Self.Subprograms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Coexecutors_Programs" Association="Self.FK_Coexecutors_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Coexecutors" EntitySet="Coexecutors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coexecutors_Users" Association="Self.FK_Coexecutors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Coexecutors" EntitySet="Coexecutors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programs_Users" Association="Self.FK_Programs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Programs" EntitySet="Programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subprograms_Programs" Association="Self.FK_Subprograms_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Subprograms" EntitySet="Subprograms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

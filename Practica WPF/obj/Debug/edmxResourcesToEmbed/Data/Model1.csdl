@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PracticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Coexecutors">
+    <Key>
+      <PropertyRef Name="id_coexecutors" />
+    </Key>
+    <Property Name="id_coexecutors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_users" Type="Int32" />
+    <Property Name="id_program" Type="Int32" />
+    <NavigationProperty Name="Programs" Relationship="PracticModel.FK_Coexecutors_Programs" FromRole="Coexecutors" ToRole="Programs" />
+    <NavigationProperty Name="Users" Relationship="PracticModel.FK_Coexecutors_Users" FromRole="Coexecutors" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Programs">
+    <Key>
+      <PropertyRef Name="id_program" />
+    </Key>
+    <Property Name="id_program" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="Int32" />
+    <Property Name="start_date" Type="Int32" />
+    <Property Name="end_date" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coexecutors" Relationship="PracticModel.FK_Coexecutors_Programs" FromRole="Programs" ToRole="Coexecutors" />
+    <NavigationProperty Name="Users" Relationship="PracticModel.FK_Programs_Users" FromRole="Programs" ToRole="Users" />
+    <NavigationProperty Name="Subprograms" Relationship="PracticModel.FK_Subprograms_Programs" FromRole="Programs" ToRole="Subprograms" />
+  </EntityType>
+  <EntityType Name="Subprograms">
+    <Key>
+      <PropertyRef Name="id_subprogram" />
+    </Key>
+    <Property Name="id_subprogram" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_program" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Programs" Relationship="PracticModel.FK_Subprograms_Programs" FromRole="Subprograms" ToRole="Programs" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="name_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coexecutors" Relationship="PracticModel.FK_Coexecutors_Users" FromRole="Users" ToRole="Coexecutors" />
+    <NavigationProperty Name="Programs" Relationship="PracticModel.FK_Programs_Users" FromRole="Users" ToRole="Programs" />
+  </EntityType>
+  <EntityContainer Name="PracticEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Coexecutors" EntityType="Self.Coexecutors" />
+    <EntitySet Name="Programs" EntityType="Self.Programs" />
+    <EntitySet Name="Subprograms" EntityType="Self.Subprograms" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Coexecutors_Programs" Association="PracticModel.FK_Coexecutors_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Coexecutors" EntitySet="Coexecutors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coexecutors_Users" Association="PracticModel.FK_Coexecutors_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Coexecutors" EntitySet="Coexecutors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programs_Users" Association="PracticModel.FK_Programs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Programs" EntitySet="Programs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subprograms_Programs" Association="PracticModel.FK_Subprograms_Programs">
+      <End Role="Programs" EntitySet="Programs" />
+      <End Role="Subprograms" EntitySet="Subprograms" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Coexecutors_Programs">
+    <End Type="PracticModel.Programs" Role="Programs" Multiplicity="0..1" />
+    <End Type="PracticModel.Coexecutors" Role="Coexecutors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="id_program" />
+      </Principal>
+      <Dependent Role="Coexecutors">
+        <PropertyRef Name="id_program" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coexecutors_Users">
+    <End Type="PracticModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="PracticModel.Coexecutors" Role="Coexecutors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Coexecutors">
+        <PropertyRef Name="id_users" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programs_Users">
+    <End Type="PracticModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="PracticModel.Programs" Role="Programs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id_user" />
+      </Principal>
+      <Dependent Role="Programs">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subprograms_Programs">
+    <End Type="PracticModel.Programs" Role="Programs" Multiplicity="0..1" />
+    <End Type="PracticModel.Subprograms" Role="Subprograms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programs">
+        <PropertyRef Name="id_program" />
+      </Principal>
+      <Dependent Role="Subprograms">
+        <PropertyRef Name="id_program" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
